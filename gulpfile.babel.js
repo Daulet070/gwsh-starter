@@ -25,8 +25,6 @@ import eslint        from 'gulp-eslint';
 import fileinclude   from 'gulp-file-include';
 import htmlmin       from 'gulp-htmlmin';
 import gulpif        from 'gulp-if';
-// import plumber       from 'gulp-plumber';
-// import plugins from 'gulp-load-plugins';
 
 import webpackConfig from './webpack.config.js';
     
@@ -56,7 +54,6 @@ const path = {
   },
   clean: './' + buildDir + '/'
 };
-
 
 const production = !!yargs.argv.production;
 
@@ -105,6 +102,21 @@ const css = () => {
     .pipe(browsersync.stream());
 };
 
+const js = () => {
+  return src(path.src.js)
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(webpackStream(webpackConfig), webpack)
+    .pipe(gulpif(production, rename({
+      suffix: '.min'
+    })))
+    .pipe(dest(path.build.js))
+    .pipe(debug({
+      'title': 'JS files'
+    }))
+    .pipe(browsersync.stream());
+};
+
 const images = () => {
   return src(path.src.img)
     .pipe(webp({
@@ -121,21 +133,6 @@ const images = () => {
       optimizationLevel: 3
     }))
     .pipe(dest(path.build.img))
-    .pipe(browsersync.stream());
-};
-
-const js = () => {
-  return src(path.src.js)
-    .pipe(eslint())
-    .pipe(eslint.format())
-    .pipe(webpackStream(webpackConfig), webpack)
-    .pipe(gulpif(production, rename({
-      suffix: '.min'
-    })))
-    .pipe(dest(path.build.js))
-    .pipe(debug({
-      'title': 'JS files'
-    }))
     .pipe(browsersync.stream());
 };
 

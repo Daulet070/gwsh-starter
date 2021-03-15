@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('view/meta/meta.html', {
+		"title": "page-2 GWSH Starter ",
+		"decription": "Catalog page",
+		"keywords": "content",
+		"ogType": "content",
+		"ogImage": "content",
+		"ogTitle": "content",
+		"ogUrl": "content",
+		"inboundLinks": [
+						 "https://cdnjs.cloudflare.com/ajax/libs/typicons/2.0.8/typicons.min.css",
+						 // "https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css"
+						],
+		"stylePath": "css/main.min.css",
+	})
+</head>
+<body>
+    @@include('blocks/modules/header/header.html', { 
+        "isCatalog": true,
+        "homePage": "index.html"
+    })
+	<main class="main">
+		@@include('blocks/modules/pages/catalog/about/about.html')
+		@@include('blocks/modules/pages/catalog/team/team.html')
+		@@include('blocks/modules/pages/catalog/skills/skills.html')
+		@@include('blocks/modules/pages/catalog/portfolio/portfolio.html')
+		@@include('blocks/modules/pages/catalog/testimonial/testimonial.html')
+		@@include('blocks/modules/pages/catalog/contact/contact.html')
+	</main>
+	@@include('blocks/modules/footer/footer.html')
+	<script src="js/vendor.chunk.js"></script>
+	<script src="js/main.js"></script>
+</body>
+</html>

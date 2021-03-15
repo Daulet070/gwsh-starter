@@ -1,10 +1,3 @@
-import { button } from '../../blocks/components/button/button';
+import '../../blocks/components/button/button';
 
-const components = () => {
-
-  console.log('components!');
-  button();
-
-};
-
-export { components };
+console.log('components!');

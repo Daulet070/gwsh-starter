@@ -178,81 +178,70 @@ var button = function button() {
 /*!*********************************************!*\
   !*** ./src/blocks/modules/header/header.js ***!
   \*********************************************/
-/*! exports provided: header */
+/*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "header", function() { return header; });
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 
+var hi = 'I am module header!';
+console.log(hi);
+/*----------------------------------------------------*/
 
-var header = function header() {
-  var hi = 'I am module header!';
-  console.log(hi);
-  /*----------------------------------------------------*/
+/* Navigation
+------------------------------------------------------ */
 
-  /* Navigation
-  ------------------------------------------------------ */
+jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).scroll(function () {
+  if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).scrollTop() > 300) {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.main_nav').addClass('sticky');
+  } else {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.main_nav').removeClass('sticky');
+  }
+}); // Mobile Navigation
 
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).scroll(function () {
-    if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).scrollTop() > 300) {
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.main_nav').addClass('sticky');
-    } else {
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.main_nav').removeClass('sticky');
-    }
-  }); // Mobile Navigation
-
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()('.mobile-toggle').click(function () {
-    if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('.main_nav').hasClass('open-nav')) {
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.main_nav').removeClass('open-nav');
-    } else {
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.main_nav').addClass('open-nav');
-    }
-  });
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()('.main_nav li a').click(function () {
-    if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('.main_nav').hasClass('open-nav')) {
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.navigation').removeClass('open-nav');
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.main_nav').removeClass('open-nav');
-    }
-  });
-};
-
-
+jquery__WEBPACK_IMPORTED_MODULE_0___default()('.mobile-toggle').click(function () {
+  if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('.main_nav').hasClass('open-nav')) {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.main_nav').removeClass('open-nav');
+  } else {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.main_nav').addClass('open-nav');
+  }
+});
+jquery__WEBPACK_IMPORTED_MODULE_0___default()('.main_nav li a').click(function () {
+  if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('.main_nav').hasClass('open-nav')) {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.navigation').removeClass('open-nav');
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.main_nav').removeClass('open-nav');
+  }
+});
 
 /***/ }),
 
-/***/ "./src/blocks/modules/testimonial/testimonial.js":
-/*!*******************************************************!*\
-  !*** ./src/blocks/modules/testimonial/testimonial.js ***!
-  \*******************************************************/
-/*! exports provided: testimonial */
+/***/ "./src/blocks/modules/pages/main/testimonial/testimonial.js":
+/*!******************************************************************!*\
+  !*** ./src/blocks/modules/pages/main/testimonial/testimonial.js ***!
+  \******************************************************************/
+/*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "testimonial", function() { return testimonial; });
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 
+/*----------------------------------------------------*/
 
-var testimonial = function testimonial() {
-  /*----------------------------------------------------*/
+/* Quote Loop
+------------------------------------------------------ */
 
-  /* Quote Loop
-  ------------------------------------------------------ */
-  function fade($ele) {
-    $ele.fadeIn(1000).delay(3000).fadeOut(1000, function () {
-      var $next = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).next('.quote');
-      fade($next.length > 0 ? $next : jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).parent().children().first());
-    });
-  }
+function fade($ele) {
+  $ele.fadeIn(1000).delay(3000).fadeOut(1000, function () {
+    var $next = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).next('.quote');
+    fade($next.length > 0 ? $next : jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).parent().children().first());
+  });
+}
 
-  fade(jquery__WEBPACK_IMPORTED_MODULE_0___default()('.quoteLoop > .quote').first());
-};
-
-
+fade(jquery__WEBPACK_IMPORTED_MODULE_0___default()('.quoteLoop > .quote').first());
 
 /***/ }),
 
@@ -260,30 +249,23 @@ var testimonial = function testimonial() {
 /*!*********************************************!*\
   !*** ./src/js/common/browserWebPSupport.js ***!
   \*********************************************/
-/*! exports provided: browserWebPSupport */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "browserWebPSupport", function() { return browserWebPSupport; });
-var browserWebPSupport = function browserWebPSupport() {
-  var testWebP = function testWebP(callback) {
-    var webP = new Image();
+var testWebP = function testWebP(callback) {
+  var webP = new Image();
 
-    webP.onload = webP.onerror = function () {
-      callback(webP.height == 2);
-    };
-
-    webP.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+  webP.onload = webP.onerror = function () {
+    callback(webP.height == 2);
   };
 
-  testWebP(function (support) {
-    var body = document.querySelector('body');
-    support == true ? body.classList.add('webp') : body.classList.add('no-webp');
-  });
+  webP.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
 };
 
-
+testWebP(function (support) {
+  var body = document.querySelector('body');
+  support == true ? body.classList.add('webp') : body.classList.add('no-webp');
+});
 
 /***/ }),
 
@@ -291,21 +273,14 @@ var browserWebPSupport = function browserWebPSupport() {
 /*!*************************************!*\
   !*** ./src/js/import/components.js ***!
   \*************************************/
-/*! exports provided: components */
+/*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 /* harmony import */ var _blocks_components_button_button__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../blocks/components/button/button */ "./src/blocks/components/button/button.js");
 
-
-var components = function components() {
-  console.log('components!');
-  Object(_blocks_components_button_button__WEBPACK_IMPORTED_MODULE_0__["button"])();
-};
-
-
+console.log('components!');
 
 /***/ }),
 
@@ -313,24 +288,16 @@ var components = function components() {
 /*!**********************************!*\
   !*** ./src/js/import/modules.js ***!
   \**********************************/
-/*! exports provided: modules */
+/*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "modules", function() { return modules; });
 /* harmony import */ var _blocks_modules_header_header__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../blocks/modules/header/header */ "./src/blocks/modules/header/header.js");
-/* harmony import */ var _blocks_modules_testimonial_testimonial__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../blocks/modules/testimonial/testimonial */ "./src/blocks/modules/testimonial/testimonial.js");
+/* harmony import */ var _blocks_modules_pages_main_testimonial_testimonial__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../blocks/modules/pages/main/testimonial/testimonial */ "./src/blocks/modules/pages/main/testimonial/testimonial.js");
 
 
-
-var modules = function modules() {
-  console.log('modules!');
-  Object(_blocks_modules_header_header__WEBPACK_IMPORTED_MODULE_0__["header"])();
-  Object(_blocks_modules_testimonial_testimonial__WEBPACK_IMPORTED_MODULE_1__["testimonial"])();
-};
-
-
+console.log('modules!');
 
 /***/ }),
 
@@ -344,18 +311,64 @@ var modules = function modules() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_browserWebPSupport__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common/browserWebPSupport */ "./src/js/common/browserWebPSupport.js");
+/* harmony import */ var _common_browserWebPSupport__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_common_browserWebPSupport__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _import_modules__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./import/modules */ "./src/js/import/modules.js");
 /* harmony import */ var _import_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./import/components */ "./src/js/import/components.js");
 'use-strict';
 
 
 
-
-Object(_common_browserWebPSupport__WEBPACK_IMPORTED_MODULE_0__["browserWebPSupport"])(); // components and modules code
-
-Object(_import_components__WEBPACK_IMPORTED_MODULE_2__["components"])();
-Object(_import_modules__WEBPACK_IMPORTED_MODULE_1__["modules"])();
-console.log('index: its work!');
+ // console.log('index: its work!');
+// var array1 = [true,  true,  true,  false,
+//     true,  true,  true,  true ,
+//     true,  false, true,  false,
+//     true,  false, false, true ,
+//     true,  true,  true,  true ,
+//     false, false, true,  true ];
+// function countSheeps(arrayOfSheep) {
+//     return arrayOfSheep.filter(Boolean).length; //17 trtue
+// }
+// countSheeps(array1);
+// function basicOp(operation, value1, value2)
+// {
+//     let result;
+//     switch (operation) {
+//         case '+':
+//             result = value1 + value2;
+//             break;
+//         case '-':
+//             result = value1 - value2;
+//             break;
+//         case '*':
+//             result = value1 * value2;
+//             break;
+//         case '/':
+//             result = value1 / value2;
+//             break;
+//         default:
+//             alert( "Oops" );
+//     }
+//     return result;
+// }
+// basicOp('+', 4, 7);
+// basicOp('-', 15, 18);
+// basicOp('*', 5, 5);
+// basicOp('/', 49, 7);
+// function findNextSquare(sq) {
+//     let result = (Math.sqrt(sq) +1) ** 2;
+//     if(Number.isInteger(result)) {
+//         console.log(result); 
+//     } else {
+//         console.log(-1); 
+//         return -1;
+//     };
+// }
+// findNextSquare(121);
+// findNextSquare(155);
+// findNextSquare(625);
+// findNextSquare(319225);
+// findNextSquare(15241383936);
+// findNextSquare(342786627);
 
 /***/ })
 
