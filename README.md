@@ -1,5 +1,5 @@
 ## GWSH Gulp Webpack SCSS HTML builder
-### Моя сборка для быстрой и гибкой верски проектов различной сложности
+### Моя сборка для быстрой и гибкой верстки проектов различной сложности
 
 <code> git clone https://github.com/Daulet070/gwsh-starter.git </code><br>
 <code> npm i </code><br>
